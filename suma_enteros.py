@@ -8,14 +8,33 @@ from tkinter import messagebox
 # funciones de la app
 #-----------------------------
 
-def sumar():
-    pass
+def calcular():
+    messagebox.showinfo("minicalculadora 1.0", "las operaciones han sido realizadas")
+    s = int(x.get()) + int (y.get())
+    r = int(x.get()) - int (y.get())
+    m = int(x.get()) * int (y.get())
+    d = int(x.get()) / int (y.get())
+    de = int(x.get()) // int (y.get())
+    mod  = int(x.get()) % int (y.get())
+    p = int(x.get()) * int (y.get())
+    t_resultados.insert(INSERT, f"{int(x.get())} + {int(y.get())} = {s}")
+    t_resultados.insert(INSERT, f"\n{int(x.get())} - {int(y.get())} = {r}")
+    t_resultados.insert(INSERT, f"\n{int(x.get())} * {int(y.get())} = {m}")
+    t_resultados.insert(INSERT, f"\n{int(x.get())} / {int(y.get())} = {d}")
+    t_resultados.insert(INSERT, f"\n{int(x.get())} // {int(y.get())} = {de}")
+    t_resultados.insert(INSERT, f"\n{int(x.get())} % {int(y.get())} = {mod}")
+    t_resultados.insert(INSERT, f"\n{int(x.get())} ** {int(y.get())} = {p}")
 
-def borrar():
-    pass
+
+def borrar(): 
+    messagebox.showinfo("minicalculadora 1.0, los datos serán borrrados")
+    x.set("")
+    y.set("")
+    t_resultados.delete("1.0","end")
+
 
 def salir():
-    messagebox.showinfo("Suma enteros 1.0", "El programa se cerrará")
+    messagebox.showinfo("minicalculadora 1.0", "El programa se cerrará")
     ventana_principal.destroy()
 
 ventana_principal=Tk()
@@ -24,6 +43,10 @@ ventana_principal.geometry(("500x500"))
 ventana_principal.config(bg="dark olive green", width=480, height=180)
 
 #variables globales
+
+x=StringVar()
+y=StringVar()
+
 
 #----------------------
 #entrada de datos
@@ -41,7 +64,7 @@ lb_logo.place(x=70, y=40)
 #-----------------------
 # titulo de la app
 #-----------------------
-titulo=Label(frame_entrada, text="Suma de enteros 1.0")
+titulo=Label(frame_entrada, text="minicalculadora 1.0")
 titulo.config(font=("Helvetica", 16), bg="white", fg="DarkOliveGreen4")
 titulo.place(x=140, y=10)
 
@@ -54,7 +77,7 @@ frame_operaciones.place(x=10, y=200)
 
 
 # boton para sumar
-bt_sumar = Button(frame_operaciones, text="Sumar", command=sumar)
+bt_sumar = Button(frame_operaciones, text="Sumar", command=calcular)
 bt_sumar.config(font=("Arial", 16), bg="white", fg="navy")
 bt_sumar.place(x=45, y=35, width=100, height=30)
 
@@ -107,7 +130,7 @@ entry_y.focus_set()
 entry_y.place(x=260, y=98)
 
 #boton para sumar
-bt_suma = Button(frame_operaciones, text="sumar", command=sumar)
+bt_suma = Button(frame_operaciones, text="calcular", command=calcular)
 bt_suma.place(x=45, y=35, width=100, height=30)
 
 #boton para borrar
